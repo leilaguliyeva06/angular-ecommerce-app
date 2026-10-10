@@ -4,7 +4,6 @@
     <button class="close-btn" type="button" (click)="onClose()">✕</button>
 
     <div class="modal-content-grid">
-      <!-- Галерея: главная картинка и миниатюры конкретного товара -->
       <div class="gallery-section">
         <div class="main-image-wrapper">
           <img [src]="images()[selectedImageIndex()]" [alt]="product().title" />
@@ -22,23 +21,10 @@
         </div>
       </div>
 
-      <!-- Информация о товаре -->
       <div class="info-section">
         <span class="category-badge">{{ product().category | uppercase }}</span>
         <h2 class="product-title">{{ product().title }}</h2>
         <div class="product-price">${{ product().price }}</div>
-
-        <!-- Выбор цвета -->
-        <div class="color-options-block">
-          <span class="block-label">COLOR OPTIONS</span>
-          <div class="colors-row">
-            <button class="color-circle black" [class.selected]="selectedColor() === 'black'" (click)="selectColor('black')" type="button"></button>
-            <button class="color-circle silver" [class.selected]="selectedColor() === 'silver'" (click)="selectColor('silver')" type="button"></button>
-            <button class="color-circle blue" [class.selected]="selectedColor() === 'blue'" (click)="selectColor('blue')" type="button"></button>
-          </div>
-        </div>
-
-        <!-- Вкладки -->
         <div class="tabs-header">
           <button class="tab-btn" [class.active]="activeTab() === 'overview'" (click)="setTab('overview')" type="button">
             Overview
@@ -48,7 +34,6 @@
           </button>
         </div>
 
-        <!-- Уникальный текст описания -->
         <div class="tab-content">
           @if (activeTab() === 'overview') {
             <p>{{ product().description }}</p>
@@ -61,7 +46,6 @@
           }
         </div>
 
-        <!-- Кнопка добавления в корзину -->
         <button class="add-selection-btn" type="button" (click)="onAddToCart()">
           <span class="bag-icon">🛍️</span> Add Selection to Cart
         </button>
