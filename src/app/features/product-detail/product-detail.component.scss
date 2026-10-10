@@ -1,0 +1,255 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(10, 10, 15, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1.5rem;
+}
+
+.modal-card {
+  background: #12121a;
+  border: 1px solid #1f1f2e;
+  border-radius: 24px;
+  width: 100%;
+  max-width: 900px;
+  padding: 2.5rem;
+  position: relative;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+
+  .close-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: #1a1a26;
+    border: 1px solid #2a2a3d;
+    color: #94a3b8;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s;
+
+    &:hover {
+      background: #2a2a3d;
+      color: #ffffff;
+    }
+  }
+
+  .modal-content-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+}
+
+/* Галерея */
+.gallery-section {
+  .main-image-wrapper {
+    width: 100%;
+    height: 300px;
+    background: #facc15; // Фирменный желтый акцент из Figma
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .thumbnails-row {
+    display: flex;
+    gap: 0.75rem;
+
+    .thumbnail-btn {
+      width: 70px;
+      height: 70px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #1a1a26;
+      border: 2px solid #2a2a3d;
+      cursor: pointer;
+      padding: 0;
+      transition: border-color 0.2s;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      &.active {
+        border-color: #818cf8;
+      }
+
+      &:hover {
+        border-color: #a78bfa;
+      }
+    }
+  }
+}
+
+/* Информация */
+.info-section {
+  .category-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #818cf8;
+    letter-spacing: 1px;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+  }
+
+  .product-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+  }
+
+  .product-price {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: #818cf8;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Выбор цвета */
+.color-options-block {
+  margin-bottom: 1.5rem;
+
+  .block-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #94a3b8;
+    letter-spacing: 0.5px;
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  .colors-row {
+    display: flex;
+    gap: 0.75rem;
+
+    .color-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: transform 0.2s, border-color 0.2s;
+
+      &.black { background-color: #111111; border-color: #333; }
+      &.silver { background-color: #e2e8f0; }
+      &.blue { background-color: #1e40af; }
+
+      &.selected {
+        border-color: #818cf8;
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+/* Вкладки */
+.tabs-header {
+  display: flex;
+  gap: 1.5rem;
+  border-bottom: 1px solid #2a2a3d;
+  margin-bottom: 1rem;
+
+  .tab-btn {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding-bottom: 0.75rem;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.2s;
+
+    &.active {
+      color: #ffffff;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: #818cf8;
+      }
+    }
+
+    &:hover {
+      color: #ffffff;
+    }
+  }
+}
+
+.tab-content {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  min-height: 60px;
+
+  .specs-text {
+    font-size: 0.9rem;
+  }
+}
+
+/* Кнопка добавления */
+.add-selection-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 14px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: opacity 0.2s, transform 0.2s;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+
+  &:hover {
+    opacity: 0.95;
+    transform: translateY(-2px);
+  }
+}
+
+@media (max-width: 768px) {
+  .modal-card {
+    padding: 1.5rem;
+
+    .modal-content-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}

@@ -1,4 +1,79 @@
-<div style="padding: 2rem; text-align: center;">
-  <h2>🛍️ Mehsullar Siyahisi Sehifesi (Product List)</h2>
-  <p>Router ugurla isleyir! Kecid tamamlandi.</p>
+<div class="products-container">
+  <!-- Hero Banner -->
+  <section class="hero-banner">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span>⚡</span> LUMINA ECOSYSTEM
+      </div>
+      <h1 class="hero-title">Elevate Your Daily Tech & Audio Experience.</h1>
+      <p class="hero-description">
+        Discover high-performance gear designed with clean architecture and professional UI/UX consistency.
+      </p>
+      <div class="hero-actions">
+        <button class="btn-primary" type="button">Explore Inventory ➔</button>
+        <button class="btn-secondary" type="button">View Releases</button>
+      </div>
+    </div>
+
+    <div class="hero-card-preview">
+      <div class="preview-badge">FEATURED ITEM</div>
+      <div class="preview-image">
+        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600&auto=format&fit=crop" alt="Featured Item" />
+      </div>
+      <div class="preview-info">
+        <h3>AeroSound Pro Wireless</h3>
+        <span class="preview-price">$299.00</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="filters-bar">
+    <button class="filter-btn" type="button">
+      <span class="icon">⚙️</span> Filters
+    </button>
+    
+    <div class="filters-info">
+      <span>Showing {{ products.length }} results</span>
+    </div>
+
+    <div class="sorting-wrapper">
+      <select class="sort-select">
+        <option value="featured">Featured First</option>
+        <option value="price-low">Price: Low to High</option>
+        <option value="price-high">Price: High to Low</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="section-header">
+    <h2 class="section-title">Available Products</h2>
+  </div>
+
+  <div class="product-grid">
+    @for (product of products; track product.id) {
+      <div class="product-card" (click)="openProductDetail(product)" style="cursor: pointer;">
+        <div class="product-card__image">
+          <img [src]="product.image" [alt]="product.title" />
+        </div>
+        <div class="product-card__content">
+          <span class="product-card__category">{{ product.category }}</span>
+          <h3 class="product-card__title">{{ product.title }}</h3>
+          <div class="product-card__footer">
+            <span class="product-card__price">${{ product.price }}</span>
+            <button class="add-to-cart-btn" type="button" (click)="$event.stopPropagation(); openProductDetail(product)">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
 </div>
+
+@if (selectedProduct()) {
+  <app-product-detail 
+    [product]="selectedProduct()!"
+    (close)="closeDetail()"
+    (addToCart)="onAddToCart(selectedProduct()!)">
+  </app-product-detail>
+}
